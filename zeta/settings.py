@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-import locale
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF8')
 
 # Application definition
 
