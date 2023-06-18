@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 import locale
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8 UTF-8')
+locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
 
 # Application definition
 
