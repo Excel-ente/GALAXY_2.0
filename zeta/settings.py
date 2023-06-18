@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+import locale
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 # Application definition
 
