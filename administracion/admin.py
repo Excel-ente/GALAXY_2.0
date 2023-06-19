@@ -62,7 +62,7 @@ class InventarioAdmin(ImportExportModelAdmin):
     exclude=('COSTO_UNITARIO','STOCK',)
     search_fields = ('PRODUCTO',)
     list_per_page = 25
-    list_display_links = ('PRODUCTO',)
+    list_display_links = ('Producto',)
 
 
     def PRECIO__COMPRA(self, obj):
