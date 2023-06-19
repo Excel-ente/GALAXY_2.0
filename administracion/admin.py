@@ -78,7 +78,7 @@ class RecetaAdmin(admin.ModelAdmin):
     ]
     
     list_display = ('Presupuesto','NOMBRE','Estado','DIAS_DE_TRABAJO','Precio','Fecha_de_entrega',)
-    readonly_fields = ('Precio','Gastos_adicionales,')
+    readonly_fields = ('Gastos_adicionales','Precio',)
     ordering = ('RENTABILIDAD',)
     exclude = ('ADICIONALES','GASTOS_ADICIONALES','ARTICULOS','STOCK', 'INGREDIENTES', 'ULTIMA_ACTUALIZACION', 'PRECIO_VENTA', 'RENTABILIDAD', 'COSTO_FINAL', 'ESTADO',)
     search_fields = ('NOMBRE',)
