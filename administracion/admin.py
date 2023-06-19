@@ -78,9 +78,9 @@ class RecetaAdmin(admin.ModelAdmin):
     ]
     
     list_display = ('Presupuesto','NOMBRE','Estado','DIAS_DE_TRABAJO','Precio','Fecha_de_entrega',)
-    readonly_fields = ('Precio',)
+    readonly_fields = ('Precio','Gastos_adicionales,')
     ordering = ('RENTABILIDAD',)
-    exclude = ('ADICIONALES','ARTICULOS','STOCK', 'INGREDIENTES', 'ULTIMA_ACTUALIZACION', 'PRECIO_VENTA', 'RENTABILIDAD', 'COSTO_FINAL', 'ESTADO',)
+    exclude = ('ADICIONALES','GASTOS_ADICIONALES','ARTICULOS','STOCK', 'INGREDIENTES', 'ULTIMA_ACTUALIZACION', 'PRECIO_VENTA', 'RENTABILIDAD', 'COSTO_FINAL', 'ESTADO',)
     search_fields = ('NOMBRE',)
     list_per_page = 25
     list_display_links = ('Presupuesto', 'NOMBRE',)
@@ -90,6 +90,10 @@ class RecetaAdmin(admin.ModelAdmin):
         models.DecimalField: {'widget': forms.TextInput},  # Ejemplo de personalización para DecimalField
     }
 
+    def Gastos_adicionales(self, obj):
+        formateo = "💲{:,.0f}".format(obj.GASTOS_ADICIONALES)
+        return formateo
+    
     def Presupuesto(self,obj):
         presup = obj.pk
         return f'# {presup}'
