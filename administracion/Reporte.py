@@ -21,7 +21,7 @@ def generar_presupuesto(modeladmin, request, queryset):
     #el logo esta en la raiz del proyecto
     logo_path = os.path.join(current_directory, 'static/logoEMPRESA.png')
     # Establecer el idioma en español
-    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8 UTF-8')
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
     # Obtener el primer pedido seleccionado
     pedido = queryset[0]  
     #Crear el objeto
