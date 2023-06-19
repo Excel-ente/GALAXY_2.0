@@ -56,7 +56,7 @@ class gastosAdicionalesAdmin(ImportExportModelAdmin):
 
 @admin.register(Insumo)
 class InventarioAdmin(ImportExportModelAdmin):
-    list_display = ('PRODUCTO','PROVEEDOR','UNIDAD_MEDIDA_COMPRA', 'CANTIDAD', 'PRECIO__COMPRA', 'UNIDAD_MEDIDA_USO', 'COSTO__UNITARIO',)
+    list_display = ('Producto','PROVEEDOR', 'PRECIO__COMPRA', 'COSTO_POR_UNIDAD',)
     ordering = ('PRODUCTO',)
     list_filter=()
     exclude=('COSTO_UNITARIO','STOCK',)
@@ -64,11 +64,27 @@ class InventarioAdmin(ImportExportModelAdmin):
     list_per_page = 25
     list_display_links = ('PRODUCTO',)
 
+
     def PRECIO__COMPRA(self, obj):
         return "💲{:,.2f}".format(obj.PRECIO_COMPRA)
     
-    def COSTO__UNITARIO(self, obj):
-        return "💲{:,.2f}".format(obj.COSTO_UNITARIO)
+    def COSTO_POR_UNIDAD(self, obj):
+
+        costo_unitario = obj.COSTO_UNITARIO
+        unidad_medida = obj.UNIDAD_MEDIDA_USO
+        costo_formateado = f'${costo_unitario:,.2f}'
+
+        cadena = f'{costo_formateado} x {unidad_medida}'
+
+        return cadena
+        
+    def Producto(self, obj):
+
+        cadena = f'{obj.PRODUCTO} (x{obj.CANTIDAD} {obj.UNIDAD_MEDIDA_COMPRA})'
+        
+        return cadena
+
+
 
 @admin.register(Receta)
 class RecetaAdmin(admin.ModelAdmin):
